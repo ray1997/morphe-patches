@@ -3,7 +3,7 @@ group = "app.ray"
 patches {
     about {
         name = "Ray's Patches"
-        description = "Morphe patches for LINE and other apps Ray uses"
+        description = "Morphe patches for LINE and YouTube"
         source = "git@github.com:ray1997/morphe-patches.git"
         author = "ray1997"
         contact = "na"

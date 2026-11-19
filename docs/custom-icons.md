@@ -35,3 +35,23 @@ Total: 203 drawables.
   `home26_feed_image_sound_*`, `home_tab_ic_safety_check`.
 - WebP reaction images.
 - The Chats archive glyph: drawn in Compose, not a drawable.
+
+## YouTube
+
+The YouTube patch targets version 21.30.216. It has two modes:
+
+- **Vector** (157 drawables): the Fluent path replaces the original paths. `android:tint`,
+  `android:autoMirrored` and the theme fill are kept. Selectors, animations and multi-colour
+  composed icons are skipped.
+- **Raster** (363 drawables): YouTube stores these as PNG or WebP in `drawable-*dpi`. The patch
+  deletes every density copy and adds `res/drawable/<name>.xml` with the Fluent path, the original
+  intrinsic size and the colour from the name (`_black`, `_white`, `_grey600`). The resource name
+  and ID do not change.
+
+Covered: bottom bar (Home, Subscriptions, Create, Library, You), top bar (search, bell, cast,
+account, settings, share), player controls (play, pause, next, previous, volume, fullscreen,
+captions), and common actions (back/close/chevrons, add, edit, delete, download, like/dislike,
+history, filters).
+
+Left unchanged: YouTube/Shorts/Premium logos, notification and offline status illustrations,
+thumbnails, avatars, composed multi-colour badges, and the WebP reaction images.

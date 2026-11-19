@@ -4,9 +4,9 @@ Guidance for coding agents working in this repository. `CLAUDE.md` is a symlink 
 
 ## What this is
 
-**Ray's Patches** is a Morphe patch bundle with one patch, **Custom icons mod**. It is a resource
-patch: it replaces LINE's vector drawables with Microsoft Fluent icons. There is no bytecode patch
-and no extension module.
+**Ray's Patches** is a Morphe patch bundle with two resource patches: **Custom icons mod** for
+LINE and **Custom icons mod (YouTube)**. They replace the apps' drawables with Microsoft Fluent
+icons. There is no bytecode patch and no extension module.
 
 Package root: `app.ray.patches`.
 
@@ -32,8 +32,11 @@ The release workflow reads the credentials from the `GPR_USER` and `GPR_KEY` rep
 
 ## How the patch works
 
-- **`CustomIconsPatch.kt`** is a `resourcePatch` named `Custom icons mod`.
-- **`IconTargets.kt`** lists each LINE drawable and the Fluent 24dp icon that replaces it.
+- **`line/customicons/CustomIconsPatch.kt`** is a `resourcePatch` named `Custom icons mod`.
+- **`line/customicons/IconTargets.kt`** lists each LINE drawable and its Fluent icon.
+- **`youtube/customicons/YouTubeCustomIconsPatch.kt`** is the YouTube patch.
+- **`youtube/customicons/YouTubeTargets.kt`** lists each YouTube drawable, its Fluent icon and
+  whether it is a vector or a PNG/WebP.
 - **`patches/src/main/resources/fluent-icons/`** holds the Fluent vector XMLs, copied from
   `microsoft/fluentui-system-icons` (MIT). `LICENSE` is bundled with them.
 
@@ -57,8 +60,13 @@ Placement is chosen by the original drawable size:
 | `67x67`, `69x69` | 40px / 39px, centred |
 | anything else | fitted to the smaller viewport dimension |
 
-The file is skipped if it has no visible colour, no path, or no matching drawable. The patch fails
-if fewer than 100 drawables are replaced, which catches a renamed LINE resource family.
+For YouTube the same vector logic keeps `android:tint` and skips multi-colour composed icons. Icons
+that exist only as PNG/WebP are deleted from every density folder and replaced by a new vector in
+`res/drawable/` with the same resource name and the colour from the file name (`_black`, `_white`,
+`_grey600`).
+
+The file is skipped if it has no visible colour, no path, or no matching drawable. Both patches fail
+if fewer than 100 drawables are replaced, which catches renamed resource families.
 
 ## Add or change an icon
 
@@ -73,8 +81,9 @@ screen is drawn in Compose, not in a drawable, so a resource patch cannot change
 
 ## Supported versions
 
-`app.ray.patches.shared.Constants.COMPATIBILITY_LINE` pins 26.14.0, 26.15.1 and 26.16.0. The
-resource names are the compatibility contract. Add a version only after applying the bundle to it.
+`app.ray.patches.shared.Constants` pins LINE 26.14.0, 26.15.1 and 26.16.0, and YouTube 21.30.216.
+The YouTube version is the non-experimental upstream Morphe target. The resource names are the
+compatibility contract. Add a version only after applying the bundle to it.
 
 ## Release
 

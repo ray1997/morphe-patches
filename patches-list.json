@@ -41,6 +41,35 @@
         }
       ],
       "options": []
+    },
+    {
+      "name": "Custom icons mod (YouTube)",
+      "description": "Replaces YouTube's bottom bar, top bar, player controls and common action icons with Microsoft Fluent icons. PNG-only icons are rebuilt as vectors with the same resource name. Brand, illustration and thumbnail assets stay unchanged.",
+      "default": true,
+      "dependencies": [],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "targets": [
+            {
+              "version": "21.30.216",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
     }
   ]
 }
