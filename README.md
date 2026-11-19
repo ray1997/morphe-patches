@@ -32,7 +32,7 @@ assets are left alone.
 ## Patches list
 
 <!-- PATCHES_START EXPANDED -->
-> **[v3.14.0](https://github.com/ray1997/morphe-patches/releases/tag/v3.14.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
+> **[v3.15.0](https://github.com/ray1997/morphe-patches/releases/tag/v3.15.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;2 patches total
 <details open>
 <summary>📦 LINE&nbsp;&nbsp;•&nbsp;&nbsp;1 patch</summary>
 <br>
